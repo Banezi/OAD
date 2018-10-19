@@ -27,7 +27,7 @@ void lecture_instance(Data& D, string f_instance)
     D.Op.resize(n);
     for(int i=0; i<n; i++)
         D.Op[i].resize(m);
-    int id, id_machine, duree, id_job, position;
+    int id_machine, duree;
     for(int i=0; i<n; i++)
     {
         for(int j=0; j<m; j++)
