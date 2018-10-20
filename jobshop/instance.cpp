@@ -8,8 +8,7 @@ using namespace std;
 void lecture_instance(Data& D, string f_instance)
 {
     f_instance = "STARTING_CODE/INSTANCES/" + f_instance;
-    //ifstream instance(f_instance);  // Ne marche pas sous Windows ?
-    ifstream instance("STARTING_CODE/INSTANCES/la01.dat"); // A optimiser avec la ligne ci-dessus
+    ifstream instance(f_instance.c_str());
     if(!instance)
     {
         cout << "Erreur d'ouverture du fichier !" << endl;

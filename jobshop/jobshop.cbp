@@ -29,12 +29,13 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-pedantic" />
+			<Add option="-Wextra" />
 			<Add option="-Wall" />
+			<Add option="-ansi" />
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="BKR.txt" />
-		<Unit filename="Bierwith.cpp" />
-		<Unit filename="Bierwith.h" />
 		<Unit filename="Data.cpp" />
 		<Unit filename="Data.h" />
 		<Unit filename="Operation.cpp" />
@@ -48,6 +49,7 @@
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

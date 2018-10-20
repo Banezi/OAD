@@ -97,9 +97,12 @@
 	<cstdlib>
 	<time.h>
 
-1539917407 source:c:\users\bane\desktop\github\oad\jobshop\main.cpp
+1540073975 source:c:\users\bane\desktop\github\oad\jobshop\main.cpp
 	<iostream>
 	"instance.h"
+	"Bierwith.h"
+	<cstdlib>
+	<time.h>
 
 1539894566 c:\users\bane\desktop\github\oad\jobshop\instance.h
 	<string>
@@ -108,13 +111,21 @@
 1539896672 source:c:\users\bane\desktop\github\oad\jobshop\operation.cpp
 	"Operation.h"
 
-1539912725 source:c:\users\bane\desktop\github\oad\jobshop\instance.cpp
+1540073780 source:c:\users\bane\desktop\github\oad\jobshop\instance.cpp
 	"instance.h"
 	<fstream>
 	<string>
 	<iostream>
 
 1539939060 /home/LOCAL.ISIMA.FR/mabane/Bureau/OAD/jobshop/Bierwith.h
+	<vector>
+	<algorithm>
+
+1540073779 source:c:\users\bane\desktop\github\oad\jobshop\bierwith.cpp
+	"Bierwith.h"
+	<iostream>
+
+1540073779 c:\users\bane\desktop\github\oad\jobshop\bierwith.h
 	<vector>
 	<algorithm>
 
