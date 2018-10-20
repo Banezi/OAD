@@ -83,7 +83,7 @@
 
 1539721494 c:\users\bane\desktop\github\oad\jobshop\operation.h
 
-1539917128 source:c:\users\bane\desktop\github\oad\jobshop\data.cpp
+1539917392 source:c:\users\bane\desktop\github\oad\jobshop\data.cpp
 	"Data.h"
 	<iostream>
 	<iomanip>
@@ -91,7 +91,7 @@
 	<cstdlib>
 	<time.h>
 
-1539917011 source:c:\users\bane\desktop\github\oad\jobshop\main.cpp
+1539917407 source:c:\users\bane\desktop\github\oad\jobshop\main.cpp
 	<iostream>
 	"instance.h"
 
