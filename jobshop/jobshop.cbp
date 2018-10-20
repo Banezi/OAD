@@ -33,6 +33,8 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="BKR.txt" />
+		<Unit filename="Bierwith.cpp" />
+		<Unit filename="Bierwith.h" />
 		<Unit filename="Data.cpp" />
 		<Unit filename="Data.h" />
 		<Unit filename="Operation.cpp" />
