@@ -3,6 +3,7 @@
 	<FileVersion major="1" minor="6" />
 	<Project>
 		<Option title="jobshop" />
+		<Option makefile="makefile" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -36,6 +37,8 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="BKR.txt" />
+		<Unit filename="Bierwith.cpp" />
+		<Unit filename="Bierwith.h" />
 		<Unit filename="Data.cpp" />
 		<Unit filename="Data.h" />
 		<Unit filename="Operation.cpp" />

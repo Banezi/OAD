@@ -2,6 +2,7 @@
 #define DATA_H_INCLUDED
 
 #include "Operation.h"
+#include "Bierwith.h"
 #include <vector>
 class Data
 {
@@ -16,6 +17,8 @@ class Data
         void afficher();
         void afficher_instance();
         void afficher_solution_makespan();
+        void afficher_matrice();
+        void Evaluer(Bierwith& V);
 };
 
 #endif // DATA_H_INCLUDED

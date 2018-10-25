@@ -10,9 +10,10 @@ int main()
     srand(time(NULL));
     Data D;
     lecture_instance(D, "la01.dat");
-    D.afficher_instance();
-    D.afficher();
+    //D.afficher_instance();
+    //D.afficher();
     //D.afficher_solution_makespan();
-    Bierwith B(D.get_n(), D.get_m());
+    Bierwith V(D.get_n(), D.get_m());
+    D.Evaluer(V);
     return 0;
 }

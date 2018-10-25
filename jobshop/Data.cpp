@@ -60,6 +60,27 @@ void Data::afficher_instance()
     }
 }
 
+void Data::afficher_matrice()
+{
+    cout << endl;
+    for(int i=0;i<m;i++)
+        cout << "Operation" << i << "\t";
+    cout << endl<<endl;
+    for(int i=0;i<m;i++)
+        cout << "id_mach duree" << "\t";
+    cout << endl << endl;
+
+    for(int i=0; i<n; i++)
+    {
+        for(int j=0; j<m; j++)
+        {
+            //cout << "id \t id_machine \t duree \t id_job \t position" << endl;
+            cout << Op[i][j].get_id_machine() << "      " << Op[i][j].get_duree() << "\t";
+        }
+        cout << endl << endl;
+    }
+}
+
 void Data::afficher_solution_makespan()
 {
     //Disjonction
@@ -67,4 +88,29 @@ void Data::afficher_solution_makespan()
     M.resize(n);
     for(int i=0; i<m; i++)
         M[i].resize(m);
+}
+
+void Data::Evaluer(Bierwith & V)
+{
+    afficher_matrice();
+
+    cout << "V = " ;
+    for(int i=0; i< n*m; i++)
+    {
+        cout << V[i];
+    }
+    cout << endl;
+
+    vector<int> Job(n,0); //Nombre d'opération traité par chaque job
+    vector<int> Mach(m,0); //Dernière operation traitée sur la machine
+    vector<int> id_pere(n*m, 0);
+    vector<int> EST(n*m, 0); //date de debut au plutôt
+
+    for(int i=0; i<n*m ; i++)
+    {
+        cout << V[i] <<endl;
+        Job[V[i]]++;
+        cout << "Job" << V[i] << " : " << Job[V[i]] << "ieme operation" << endl;
+    }
+
 }

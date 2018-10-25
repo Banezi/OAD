@@ -12,11 +12,13 @@ Bierwith::Bierwith(int n, int m)
         }
     }
     suffle();
+    /*
     for(int i=0;i< n*m; ++i)
     {
         cout << V[i];
 
     }
+    */
 }
 
 void Bierwith::suffle()
@@ -35,5 +37,7 @@ void Bierwith::value()
 }
 void Bierwith::eval()
 {
+    //Date de debut des operations et le plus long chemin
+    //vector<int> est;
 
 }

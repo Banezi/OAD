@@ -42,5 +42,5 @@ void lecture_instance(Data& D, string f_instance)
         }
         //cout << endl; // pour l'affichage de l'instance
     }
-    //D.afficher();
+    //D.afficher();i
 }

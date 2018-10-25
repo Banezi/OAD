@@ -83,13 +83,14 @@
 	"data.h"
 	<string>
 
-1539916065 c:\users\bane\desktop\github\oad\jobshop\data.h
+1540496592 c:\users\bane\desktop\github\oad\jobshop\data.h
 	"Operation.h"
+	"Bierwith.h"
 	<vector>
 
 1539721494 c:\users\bane\desktop\github\oad\jobshop\operation.h
 
-1539917392 source:c:\users\bane\desktop\github\oad\jobshop\data.cpp
+1540496749 source:c:\users\bane\desktop\github\oad\jobshop\data.cpp
 	"Data.h"
 	<iostream>
 	<iomanip>
@@ -97,7 +98,7 @@
 	<cstdlib>
 	<time.h>
 
-1540073975 source:c:\users\bane\desktop\github\oad\jobshop\main.cpp
+1540496696 source:c:\users\bane\desktop\github\oad\jobshop\main.cpp
 	<iostream>
 	"instance.h"
 	"Bierwith.h"
@@ -111,7 +112,7 @@
 1539896672 source:c:\users\bane\desktop\github\oad\jobshop\operation.cpp
 	"Operation.h"
 
-1540073780 source:c:\users\bane\desktop\github\oad\jobshop\instance.cpp
+1540491804 source:c:\users\bane\desktop\github\oad\jobshop\instance.cpp
 	"instance.h"
 	<fstream>
 	<string>
@@ -121,11 +122,11 @@
 	<vector>
 	<algorithm>
 
-1540073779 source:c:\users\bane\desktop\github\oad\jobshop\bierwith.cpp
+1540493089 source:c:\users\bane\desktop\github\oad\jobshop\bierwith.cpp
 	"Bierwith.h"
 	<iostream>
 
-1540073779 c:\users\bane\desktop\github\oad\jobshop\bierwith.h
+1540495177 c:\users\bane\desktop\github\oad\jobshop\bierwith.h
 	<vector>
 	<algorithm>
 
