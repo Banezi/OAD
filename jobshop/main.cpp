@@ -9,7 +9,7 @@ int main()
 {
     srand(time(NULL));
     Data D;
-    lecture_instance(D, "la01.dat");
+    lecture_instance(D, "la00.dat");
     //D.afficher_instance();
     //D.afficher();
     //D.afficher_solution_makespan();

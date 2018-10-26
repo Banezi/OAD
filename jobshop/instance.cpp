@@ -34,7 +34,8 @@ void lecture_instance(Data& D, string f_instance)
             instance >> id_machine;
             instance >> duree;
             //cout << id_machine << " " << duree << " " ;
-            D.Op[i][j].set_id(i*10 + id_machine);
+            //D.Op[i][j].set_id(i*10 + id_machine);
+            D.Op[i][j].set_id(i*n+j);
             D.Op[i][j].set_id_machine(id_machine);
             D.Op[i][j].set_duree(duree);
             D.Op[i][j].set_id_job(i);

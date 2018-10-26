@@ -93,24 +93,75 @@ void Data::afficher_solution_makespan()
 void Data::Evaluer(Bierwith & V)
 {
     afficher_matrice();
-
+    afficher();
     cout << "V = " ;
     for(int i=0; i< n*m; i++)
     {
-        cout << V[i];
+        cout << V[i] << " ";
     }
     cout << endl;
 
     vector<int> Job(n,0); //Nombre d'opération traité par chaque job
-    vector<int> Mach(m,0); //Dernière operation traitée sur la machine
-    vector<int> id_pere(n*m, 0);
+    vector<int> Mach(m,-1); //Dernière operation traitée sur la machine
+    vector<int> id_pere(n*m, -1);
     vector<int> EST(n*m, 0); //date de debut au plutôt
 
-    for(int i=0; i<n*m ; i++)
+    for(int i=0; i<1 ; i++)
     {
-        cout << V[i] <<endl;
+        /*
+        Operation operation;
+        operation = Op[V[i]][Job[V[i]]];
+        int machi= Mach[operation.get_id_machine()];
+        if (machi != 0)
+        {
+            int perei=id_pere[operation.get_id()];
+            perei= machi;
+            EST[operation.get_id()]=max( Op[perei][].get_duree()+EST[id_pere[operation.get_id()])
+        }
+        Mach[operation.get_id_machine()]=operation.get_id();
+
         Job[V[i]]++;
-        cout << "Job" << V[i] << " : " << Job[V[i]] << "ieme operation" << endl;
+        */
+
+
+        cout << "Machine utilisée : "<< Op[V[i]][Job[V[i]]].get_id_machine() << endl;
+        /*if(Mach[Op[V[i]][Job[V[i]]].get_id_machine()] != -1)
+        {
+            id_pere[i] = Mach[Op[V[i]][Job[V[i]]].get_id_machine()];
+            EST[i]=max(Op[V[i]][Job[V[i]]].get_duree()+EST[id_pere[i]],);
+        }*/
+        Mach[Op[V[i]][Job[V[i]]].get_id_machine()]=Op[V[i]][Job[V[i]]].get_id();
+        Job[V[i]]++;
+        // Affichage de Job
+        for(int i=0; i< n; i++)
+        {
+            cout << "Job[" << i << "]=" << Job[i] << "\t";
+        }
+        cout << endl;
+
+        // Affichage de Mach
+        for(int i=0; i< m; i++)
+        {
+            cout << "Mach[" << i << "]=" << Mach[i] << "\t";
+        }
+        cout << endl;
+
+        // Affichage de id_pere
+        for(int i=0; i< n*m; i++)
+        {
+            cout << "id_pere[" << i << "]=" << id_pere[i] << "\t";
+        }
+        cout << endl;
+
+        // Affichage de EST
+        for(int i=0; i< n*m; i++)
+        {
+            cout << "EST[" << i << "]=" << EST[i] << "\t";
+        }
+        cout << endl;
+
+
+
     }
 
 }
