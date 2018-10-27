@@ -101,37 +101,32 @@ void Data::Evaluer(Bierwith & V)
     }
     cout << endl;
 
-    vector<int> Job(n,0); //Nombre d'opération traité par chaque job
+    vector<int> Job(n,-1); //Nombre d'opération traité par chaque job . Job[i] = 0 : 1ere operation du job i
     vector<int> Mach(m,-1); //Dernière operation traitée sur la machine
-    vector<int> id_pere(n*m, -1);
-    vector<int> EST(n*m, 0); //date de debut au plutôt
+    vector<int> id_pere(n*m, -2); // -2 : non traité   -1 : origine
+    vector<int> EST(n*m, -1); //date de debut au plutôt   -1:non traité
 
-    for(int i=0; i<1 ; i++)
+    for(int i=0; i<n*m ; i++)
     {
-        /*
-        Operation operation;
-        operation = Op[V[i]][Job[V[i]]];
-        int machi= Mach[operation.get_id_machine()];
-        if (machi != 0)
+        cout << endl << endl << "\t\tIteration : " << i+1 << endl;
+        cout << "V["<<i<<"] = " << V[i] << endl;
+        Job[V[i]] = Job[V[i]] + 1;
+        Operation operation = Op[V[i]][Job[V[i]]];
+        cout << "ID Operation Globale : " << operation.get_id() << endl;
+        cout << "Machine utilisee : "<< operation.get_id_machine() << endl;
+        if(id_pere[operation.get_id()] == -2 || id_pere[operation.get_id()] == -1)
         {
-            int perei=id_pere[operation.get_id()];
-            perei= machi;
-            EST[operation.get_id()]=max( Op[perei][].get_duree()+EST[id_pere[operation.get_id()])
+            id_pere[operation.get_id()] = Mach[operation.get_id_machine()];
         }
+
+        /* -------- */
+        /* Op[id_pere[operation.get_id()]/m][id_pere[operation.get_id()]%m].get_duree() */
+        /* -------- */
+
         Mach[operation.get_id_machine()]=operation.get_id();
 
-        Job[V[i]]++;
-        */
+        cout << "Job " << V[i] << " : Operation " << Job[V[i]] << endl;
 
-
-        cout << "Machine utilisée : "<< Op[V[i]][Job[V[i]]].get_id_machine() << endl;
-        /*if(Mach[Op[V[i]][Job[V[i]]].get_id_machine()] != -1)
-        {
-            id_pere[i] = Mach[Op[V[i]][Job[V[i]]].get_id_machine()];
-            EST[i]=max(Op[V[i]][Job[V[i]]].get_duree()+EST[id_pere[i]],);
-        }*/
-        Mach[Op[V[i]][Job[V[i]]].get_id_machine()]=Op[V[i]][Job[V[i]]].get_id();
-        Job[V[i]]++;
         // Affichage de Job
         for(int i=0; i< n; i++)
         {
