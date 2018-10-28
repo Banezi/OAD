@@ -77,45 +77,46 @@
 	<string>
 	<iostream>
 
-1539721494 source:c:\users\bane\desktop\github\oad\jobshop\bkr.cpp
+1539717894 source:c:\users\bane\desktop\github\oad\jobshop\bkr.cpp
 	"bkr.h"
 	<fstream>
 	<algorithm>
 
-1539721494 c:\users\bane\desktop\github\oad\jobshop\bkr.h
+1539717894 c:\users\bane\desktop\github\oad\jobshop\bkr.h
 	"data.h"
 	<string>
 
-1540496592 c:\users\bane\desktop\github\oad\jobshop\data.h
+1540492992 c:\users\bane\desktop\github\oad\jobshop\data.h
 	"Operation.h"
 	"Bierwith.h"
 	<vector>
 
-1539721494 c:\users\bane\desktop\github\oad\jobshop\operation.h
+1539717894 c:\users\bane\desktop\github\oad\jobshop\operation.h
 
-1540678966 source:c:\users\bane\desktop\github\oad\jobshop\data.cpp
+1540769325 source:c:\users\bane\desktop\github\oad\jobshop\data.cpp
 	"Data.h"
 	<iostream>
 	<iomanip>
 	"Operation.h"
 	<cstdlib>
 	<time.h>
+	<algorithm>
 
-1540648566 source:c:\users\bane\desktop\github\oad\jobshop\main.cpp
+1540644966 source:c:\users\bane\desktop\github\oad\jobshop\main.cpp
 	<iostream>
 	"instance.h"
 	"Bierwith.h"
 	<cstdlib>
 	<time.h>
 
-1539894566 c:\users\bane\desktop\github\oad\jobshop\instance.h
+1539890966 c:\users\bane\desktop\github\oad\jobshop\instance.h
 	<string>
 	"Data.h"
 
-1539896672 source:c:\users\bane\desktop\github\oad\jobshop\operation.cpp
+1539893072 source:c:\users\bane\desktop\github\oad\jobshop\operation.cpp
 	"Operation.h"
 
-1540551399 source:c:\users\bane\desktop\github\oad\jobshop\instance.cpp
+1540547799 source:c:\users\bane\desktop\github\oad\jobshop\instance.cpp
 	"instance.h"
 	<fstream>
 	<string>
@@ -125,11 +126,11 @@
 	<vector>
 	<algorithm>
 
-1540648609 source:c:\users\bane\desktop\github\oad\jobshop\bierwith.cpp
+1540766330 source:c:\users\bane\desktop\github\oad\jobshop\bierwith.cpp
 	"Bierwith.h"
 	<iostream>
 
-1540495177 c:\users\bane\desktop\github\oad\jobshop\bierwith.h
+1540491577 c:\users\bane\desktop\github\oad\jobshop\bierwith.h
 	<vector>
 	<algorithm>
 

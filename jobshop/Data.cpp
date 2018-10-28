@@ -4,7 +4,7 @@
 #include "Operation.h"
 #include <cstdlib>
 #include <time.h>
-
+#include <algorithm>
 using namespace std;
 
 int Data::get_n()
@@ -101,10 +101,31 @@ void Data::Evaluer(Bierwith & V)
     }
     cout << endl;
 
+    //Créations des séquences
+    vector < vector<int> > sequence;
+    sequence.resize(n);
+    for(int i=0; i<m; i++)
+        sequence[i].resize(m);
+    for(int i=0; i<n*m; i++)
+    {
+        int ni=0;
+        //for(int j=0; j<m; j++)
+        //{
+            cout<<"***********sequence["<<V[i]<<"]["<<ni<<"] = " << Op[V[i]][ni].get_id_machine() << endl;
+            sequence[V[i]][ni] = Op[V[i]][ni].get_id_machine();
+            ni++;
+        //}
+    }
+    for(int i=0; i<n; i++)
+        for(int j=0;j<m; j++)
+            cout << "sequence["<<i<<"]["<<j<<"] = " << sequence[i][j] << endl;
+
+
     vector<int> Job(n,-1); //Nombre d'opération traité par chaque job . Job[i] = 0 : 1ere operation du job i
     vector<int> Mach(m,-1); //Dernière operation traitée sur la machine
     vector<int> id_pere(n*m, -2); // -2 : non traité   -1 : origine
     vector<int> EST(n*m, -1); //date de debut au plutôt   -1:non traité
+
 
     for(int i=0; i<n*m ; i++)
     {
@@ -114,16 +135,34 @@ void Data::Evaluer(Bierwith & V)
         Operation operation = Op[V[i]][Job[V[i]]];
         cout << "ID Operation Globale : " << operation.get_id() << endl;
         cout << "Machine utilisee : "<< operation.get_id_machine() << endl;
-        if(id_pere[operation.get_id()] == -2 || id_pere[operation.get_id()] == -1)
+        if(id_pere[operation.get_id()] == -2 )
+        {
+            cout << "------------------> operation.get_idmachine() = " << operation.get_id_machine() << " et Mach[opgetidmach] = " << Mach[operation.get_id_machine()] << endl;
+            cout << "Avant : Mach[operation.get_id_machine()] = " << Mach[operation.get_id_machine()] << endl;
+            id_pere[operation.get_id()] = Mach[operation.get_id_machine()];
+            Mach[operation.get_id_machine()]=operation.get_id();
+            cout << "Apres : Mach[operation.get_id_machine()] = " << Mach[operation.get_id_machine()] << endl;
+        }
+        /*if( id_pere[operation.get_id()] == -1)
         {
             id_pere[operation.get_id()] = Mach[operation.get_id_machine()];
-        }
+        }*/
+        Operation operation_prec = Op[id_pere[operation.get_id()]/m][id_pere[operation.get_id()]%m] ;
 
+        //EST[operation.get_id()] = ( id_pere[operation.get_id()]==-1 ) ? 0 : max( EST[operation.get_id()] , EST[id_pere[operation.get_id()]] + operation_prec.get_duree() ) ;
+        if(id_pere[operation.get_id()]==-1)
+        {
+            EST[operation.get_id()] = 0;
+        }
+        else
+        {
+            EST[operation.get_id()] = max( EST[operation.get_id()] , EST[id_pere[operation.get_id()]] + operation_prec.get_duree() ) ;
+        }
         /* -------- */
         /* Op[id_pere[operation.get_id()]/m][id_pere[operation.get_id()]%m].get_duree() */
         /* -------- */
 
-        Mach[operation.get_id_machine()]=operation.get_id();
+        //Mach[operation.get_id_machine()]=operation.get_id();
 
         cout << "Job " << V[i] << " : Operation " << Job[V[i]] << endl;
 
