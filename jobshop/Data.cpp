@@ -106,20 +106,18 @@ void Data::Evaluer(Bierwith & V)
     sequence.resize(n);
     for(int i=0; i<m; i++)
         sequence[i].resize(m);
+
+    vector<int> ni(n,0); // n[i]=k : kème apparution de i dans le vecteur de Bierwirth
     for(int i=0; i<n*m; i++)
     {
-        int ni=0;
-        //for(int j=0; j<m; j++)
-        //{
-            cout<<"***********sequence["<<V[i]<<"]["<<ni<<"] = " << Op[V[i]][ni].get_id_machine() << endl;
-            sequence[V[i]][ni] = Op[V[i]][ni].get_id_machine();
-            ni++;
-        //}
+        //cout << "\t*sequence[" << V[i] << "][" << ni[V[i]] << "] = " << Op[V[i]][ni[V[i]]].get_id_machine() << endl;
+        sequence[V[i]][ni[V[i]]] = Op[V[i]][ni[V[i]]].get_id_machine();
+        ni[V[i]]++;
     }
-    for(int i=0; i<n; i++)
+    /*for(int i=0; i<n; i++)
         for(int j=0;j<m; j++)
             cout << "sequence["<<i<<"]["<<j<<"] = " << sequence[i][j] << endl;
-
+    */
 
     vector<int> Job(n,-1); //Nombre d'opération traité par chaque job . Job[i] = 0 : 1ere operation du job i
     vector<int> Mach(m,-1); //Dernière operation traitée sur la machine
@@ -140,6 +138,24 @@ void Data::Evaluer(Bierwith & V)
             cout << "------------------> operation.get_idmachine() = " << operation.get_id_machine() << " et Mach[opgetidmach] = " << Mach[operation.get_id_machine()] << endl;
             cout << "Avant : Mach[operation.get_id_machine()] = " << Mach[operation.get_id_machine()] << endl;
             id_pere[operation.get_id()] = Mach[operation.get_id_machine()];
+
+            if(Mach[operation.get_id_machine()] == -1 && operation.get_position()!=0)
+            {
+                cout << "\t\t\t\t\t\t\t*!*!*!*!**!*!*!*! Alerte Point sensible *!*!*!*!*!*!" << endl;
+                id_pere[operation.get_id()] = operation.get_id() - 1;
+            }
+            if(operation.get_id_machine() >= 0 && Mach[operation.get_id_machine()] >= 0)
+            {
+                Operation precedentb = Op[Mach[operation.get_id_machine()]/m][Mach[operation.get_id_machine()]%m];
+                Operation precedent = Op[(operation.get_id()-1)/m][(operation.get_id()-1)%m];
+                if(EST[precedentb.get_id()]+precedentb.get_duree() < EST[precedent.get_id()] + precedent.get_duree() )
+                {
+                    cout << "\t\t\t\t\t\t\t*!*!*!*!**!*!*!*! Alerte Point sensible 2 *!*!*!*!*!*!" << endl;
+                    id_pere[operation.get_id()] = precedent.get_id();
+                }
+            }
+
+
             Mach[operation.get_id_machine()]=operation.get_id();
             cout << "Apres : Mach[operation.get_id_machine()] = " << Mach[operation.get_id_machine()] << endl;
         }
@@ -194,8 +210,7 @@ void Data::Evaluer(Bierwith & V)
         }
         cout << endl;
 
-
-
     }
+
 
 }
