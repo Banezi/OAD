@@ -90,7 +90,7 @@ void Data::afficher_solution_makespan()
         M[i].resize(m);
 }
 
-void Data::Evaluer(Bierwith & V)
+int Data::Evaluer(Bierwith & V)
 {
     afficher_matrice();
     afficher();
@@ -212,5 +212,32 @@ void Data::Evaluer(Bierwith & V)
 
     }
 
-
+    //Calcul du makespan
+    int maxEst=0, id_op_maxEST=0, makespan=0;
+    for(int i=0; i<n*m; i++)
+    {
+        if(EST[i]>maxEst)
+        {
+            maxEst = EST[i];
+            id_op_maxEST = ( EST[i]+Op[i/m][i%m].get_duree() > EST[id_op_maxEST]+Op[id_op_maxEST/m][id_op_maxEST%m].get_duree() ) ? i : id_op_maxEST;
+        }
+        else if(EST[i]==maxEst)
+        {
+            id_op_maxEST = ( EST[i]+Op[i/m][i%m].get_duree() > EST[id_op_maxEST]+Op[id_op_maxEST/m][id_op_maxEST%m].get_duree() ) ? i : id_op_maxEST;
+        }
+    }
+    makespan = EST[id_op_maxEST]+Op[id_op_maxEST/m][id_op_maxEST%m].get_duree();
+    cout << "maxEST = " << maxEst << " et id_op_maxEST = " << id_op_maxEST << " et makespan = " << makespan <<endl;
+    cout << "Chemin critique : ";
+    vector<int> chemin;
+    vector<int>::iterator it;
+    while(id_op_maxEST!=-1)
+    {
+        chemin.push_back(id_op_maxEST);
+        id_op_maxEST = id_pere[id_op_maxEST];
+    }
+    reverse(chemin.begin(), chemin.end());
+    for(it = chemin.begin(); it!=chemin.end(); ++it)
+        cout << *it << " ";
+    return makespan;
 }

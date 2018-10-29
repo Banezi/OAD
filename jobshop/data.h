@@ -18,7 +18,7 @@ class Data
         void afficher_instance();
         void afficher_solution_makespan();
         void afficher_matrice();
-        void Evaluer(Bierwith& V);
+        int Evaluer(Bierwith& V);
 };
 
 #endif // DATA_H_INCLUDED

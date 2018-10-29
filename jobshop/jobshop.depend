@@ -86,14 +86,14 @@
 	"data.h"
 	<string>
 
-1540492992 c:\users\bane\desktop\github\oad\jobshop\data.h
+1540847466 c:\users\bane\desktop\github\oad\jobshop\data.h
 	"Operation.h"
 	"Bierwith.h"
 	<vector>
 
 1539717894 c:\users\bane\desktop\github\oad\jobshop\operation.h
 
-1540769802 source:c:\users\bane\desktop\github\oad\jobshop\data.cpp
+1540848458 source:c:\users\bane\desktop\github\oad\jobshop\data.cpp
 	"Data.h"
 	<iostream>
 	<iomanip>
@@ -126,7 +126,7 @@
 	<vector>
 	<algorithm>
 
-1540766330 source:c:\users\bane\desktop\github\oad\jobshop\bierwith.cpp
+1540848489 source:c:\users\bane\desktop\github\oad\jobshop\bierwith.cpp
 	"Bierwith.h"
 	<iostream>
 

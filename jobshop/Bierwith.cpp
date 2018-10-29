@@ -15,6 +15,7 @@ Bierwith::Bierwith(int n, int m)
 
     /* Fixation du vecteur de Bierwith pour le test */
     V[0]=0; V[1]=2; V[2]=0; V[3]=1; V[4]=1; V[5]=2; V[6]=0; V[7]=1; V[8]=2;
+    //V[0]=2; V[1]=0; V[2]=1; V[3]=0; V[4]=0; V[5]=1; V[6]=2; V[7]=1; V[8]=2;
 
 
     /*
