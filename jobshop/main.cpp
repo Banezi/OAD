@@ -3,6 +3,8 @@
 #include "Bierwith.h"
 #include <cstdlib>
 #include <time.h>
+#include <algorithm>
+#include <iterator>
 using namespace std;
 
 int main()
@@ -14,6 +16,9 @@ int main()
     //D.afficher();
     //D.afficher_solution_makespan();
     Bierwith V(D.get_n(), D.get_m());
-    D.Evaluer(V);
+    vector<int> ch_cri;
+    D.Evaluer(V, ch_cri);
+    cout << "Notre chemin critique : ";
+    copy(ch_cri.begin(), ch_cri.end(), ostream_iterator<int>(cout, "\n"));
     return 0;
 }

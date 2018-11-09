@@ -18,7 +18,8 @@ class Data
         void afficher_instance();
         void afficher_solution_makespan();
         void afficher_matrice();
-        int Evaluer(Bierwith& V);
+        int Evaluer(Bierwith& V, std::vector<int>& chemin_critique);
+        void RechercheLocale(Bierwith& V);
 };
 
 #endif // DATA_H_INCLUDED

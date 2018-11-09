@@ -90,7 +90,7 @@ void Data::afficher_solution_makespan()
         M[i].resize(m);
 }
 
-int Data::Evaluer(Bierwith & V)
+int Data::Evaluer(Bierwith & V, vector<int>& chemin_critique)
 {
     afficher_matrice();
     afficher();
@@ -239,5 +239,13 @@ int Data::Evaluer(Bierwith & V)
     reverse(chemin.begin(), chemin.end());
     for(it = chemin.begin(); it!=chemin.end(); ++it)
         cout << *it << " ";
+
+    chemin_critique = chemin;
     return makespan;
 }
+
+/*void Data::RechercheLocale(Bierwith& V)
+{
+
+}
+*/

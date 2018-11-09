@@ -49,20 +49,23 @@
 
 1539337146 /home/LOCAL.ISIMA.FR/mabane/Bureau/OAD/jobshop/Operation.h
 
-1540540987 source:/home/LOCAL.ISIMA.FR/mabane/Bureau/OAD/jobshop/Data.cpp
+1541758640 source:/home/LOCAL.ISIMA.FR/mabane/Bureau/OAD/jobshop/Data.cpp
 	"Data.h"
 	<iostream>
 	<iomanip>
 	"Operation.h"
 	<cstdlib>
 	<time.h>
+	<algorithm>
 
-1540540991 source:/home/LOCAL.ISIMA.FR/mabane/Bureau/OAD/jobshop/main.cpp
+1541759092 source:/home/LOCAL.ISIMA.FR/mabane/Bureau/OAD/jobshop/main.cpp
 	<iostream>
 	"instance.h"
 	"Bierwith.h"
 	<cstdlib>
 	<time.h>
+	<algorithm>
+	<iterator>
 
 1539860429 /home/LOCAL.ISIMA.FR/mabane/Bureau/OAD/jobshop/instance.h
 	<string>
@@ -71,7 +74,7 @@
 1539936734 source:/home/LOCAL.ISIMA.FR/mabane/Bureau/OAD/jobshop/Operation.cpp
 	"Operation.h"
 
-1540540991 source:/home/LOCAL.ISIMA.FR/mabane/Bureau/OAD/jobshop/instance.cpp
+1540546994 source:/home/LOCAL.ISIMA.FR/mabane/Bureau/OAD/jobshop/instance.cpp
 	"instance.h"
 	<fstream>
 	<string>
@@ -134,7 +137,12 @@
 	<vector>
 	<algorithm>
 
-1540540987 source:/home/LOCAL.ISIMA.FR/mabane/Bureau/OAD/jobshop/Bierwith.cpp
+1541755062 source:/home/LOCAL.ISIMA.FR/mabane/Bureau/OAD/jobshop/Bierwith.cpp
 	"Bierwith.h"
 	<iostream>
+
+1541758385 /home/LOCAL.ISIMA.FR/mabane/Bureau/OAD/jobshop/Data.h
+	"Operation.h"
+	"Bierwith.h"
+	<vector>
 
