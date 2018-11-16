@@ -12,3 +12,7 @@ int twoOpt (Solution &);
 
 // metaheuristics
 
+// ========================================
+// Nearest Neighbor
+// ========================================
+void Nearest_Neighbor(Solution& s);

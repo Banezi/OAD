@@ -79,7 +79,13 @@ int twoOpt (Solution & sol)
   return std::max(delta,0);
 }
 
+// ========================================
+// Nearest Neighbor
+// ========================================
+void Nearest_Neighbor(Solution& s)
+{
 
+}
 
 /* ======================================================================= */
 /* end of file                                                             */
