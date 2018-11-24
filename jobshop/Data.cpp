@@ -101,13 +101,13 @@ int Data::Evaluer(Bierwith & V, vector<int>& chemin_critique)
     }
     cout << endl;
 
-    //Créations des séquences
+    //Crï¿½ations des sï¿½quences
     vector < vector<int> > sequence;
     sequence.resize(n);
     for(int i=0; i<m; i++)
         sequence[i].resize(m);
 
-    vector<int> ni(n,0); // n[i]=k : kème apparution de i dans le vecteur de Bierwirth
+    vector<int> ni(n,0); // n[i]=k : kï¿½me apparution de i dans le vecteur de Bierwirth
     for(int i=0; i<n*m; i++)
     {
         //cout << "\t*sequence[" << V[i] << "][" << ni[V[i]] << "] = " << Op[V[i]][ni[V[i]]].get_id_machine() << endl;
@@ -119,10 +119,10 @@ int Data::Evaluer(Bierwith & V, vector<int>& chemin_critique)
             cout << "sequence["<<i<<"]["<<j<<"] = " << sequence[i][j] << endl;
     */
 
-    vector<int> Job(n,-1); //Nombre d'opération traité par chaque job . Job[i] = 0 : 1ere operation du job i
-    vector<int> Mach(m,-1); //Dernière operation traitée sur la machine
-    vector<int> id_pere(n*m, -2); // -2 : non traité   -1 : origine
-    vector<int> EST(n*m, -1); //date de debut au plutôt   -1:non traité
+    vector<int> Job(n,-1); //Nombre d'opï¿½ration traitï¿½ par chaque job . Job[i] = 0 : 1ere operation du job i
+    vector<int> Mach(m,-1); //Derniï¿½re operation traitï¿½e sur la machine
+    vector<int> id_pere(n*m, -2); // -2 : non traitï¿½   -1 : origine
+    vector<int> EST(n*m, -1); //date de debut au plutï¿½t   -1:non traitï¿½
 
 
     for(int i=0; i<n*m ; i++)

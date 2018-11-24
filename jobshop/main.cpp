@@ -19,6 +19,7 @@ int main()
     vector<int> ch_cri;
     D.Evaluer(V, ch_cri);
     cout << "Notre chemin critique : ";
-    copy(ch_cri.begin(), ch_cri.end(), ostream_iterator<int>(cout, "\n"));
+    copy(ch_cri.begin(), ch_cri.end(), ostream_iterator<int>(cout, " "));
+    cout << endl ;
     return 0;
 }
