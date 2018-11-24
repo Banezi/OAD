@@ -47,3 +47,16 @@ void Bierwith::eval()
     //vector<int> est;
 
 }
+
+vector<int> & Bierwith::get_V()
+{
+    return V;
+}
+int Bierwith::get_val()
+{
+    return val;
+}
+void Bierwith::set_val(int makespan)
+{
+    val = makespan;
+}

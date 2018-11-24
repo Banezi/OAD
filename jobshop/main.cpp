@@ -18,8 +18,13 @@ int main()
     Bierwith V(D.get_n(), D.get_m());
     vector<int> ch_cri;
     D.Evaluer(V, ch_cri);
+    /*
     cout << "Notre chemin critique : ";
     copy(ch_cri.begin(), ch_cri.end(), ostream_iterator<int>(cout, " "));
     cout << endl ;
+    */
+    Bierwith V1(D.get_n(), D.get_m());
+    vector<int> S;
+    D.Recherche_Locale(V1,S,3);
     return 0;
 }

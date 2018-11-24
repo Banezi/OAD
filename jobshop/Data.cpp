@@ -5,6 +5,8 @@
 #include <cstdlib>
 #include <time.h>
 #include <algorithm>
+#include <iterator>
+
 using namespace std;
 
 int Data::get_n()
@@ -127,21 +129,21 @@ int Data::Evaluer(Bierwith & V, vector<int>& chemin_critique)
 
     for(int i=0; i<n*m ; i++)
     {
-        cout << endl << endl << "\t\tIteration : " << i+1 << endl;
-        cout << "V["<<i<<"] = " << V[i] << endl;
+        /*cout << endl << endl << "\t\tIteration : " << i+1 << endl;
+        cout << "V["<<i<<"] = " << V[i] << endl;*/
         Job[V[i]] = Job[V[i]] + 1;
         Operation operation = Op[V[i]][Job[V[i]]];
-        cout << "ID Operation Globale : " << operation.get_id() << endl;
-        cout << "Machine utilisee : "<< operation.get_id_machine() << endl;
+        /*cout << "ID Operation Globale : " << operation.get_id() << endl;
+        cout << "Machine utilisee : "<< operation.get_id_machine() << endl;*/
         if(id_pere[operation.get_id()] == -2 )
         {
-            cout << "------------------> operation.get_idmachine() = " << operation.get_id_machine() << " et Mach[opgetidmach] = " << Mach[operation.get_id_machine()] << endl;
-            cout << "Avant : Mach[operation.get_id_machine()] = " << Mach[operation.get_id_machine()] << endl;
+            //cout << "------------------> operation.get_idmachine() = " << operation.get_id_machine() << " et Mach[opgetidmach] = " << Mach[operation.get_id_machine()] << endl;
+            //cout << "Avant : Mach[operation.get_id_machine()] = " << Mach[operation.get_id_machine()] << endl;
             id_pere[operation.get_id()] = Mach[operation.get_id_machine()];
 
             if(Mach[operation.get_id_machine()] == -1 && operation.get_position()!=0)
             {
-                cout << "\t\t\t\t\t\t\t*!*!*!*!**!*!*!*! Alerte Point sensible *!*!*!*!*!*!" << endl;
+                //cout << "\t\t\t\t\t\t\t*!*!*!*!**!*!*!*! Alerte Point sensible *!*!*!*!*!*!" << endl;
                 id_pere[operation.get_id()] = operation.get_id() - 1;
             }
             if(operation.get_id_machine() >= 0 && Mach[operation.get_id_machine()] >= 0)
@@ -150,15 +152,16 @@ int Data::Evaluer(Bierwith & V, vector<int>& chemin_critique)
                 Operation precedent = Op[(operation.get_id()-1)/m][(operation.get_id()-1)%m];
                 if(EST[precedentb.get_id()]+precedentb.get_duree() < EST[precedent.get_id()] + precedent.get_duree() )
                 {
-                    cout << "\t\t\t\t\t\t\t*!*!*!*!**!*!*!*! Alerte Point sensible 2 *!*!*!*!*!*!" << endl;
+                    //cout << "\t\t\t\t\t\t\t*!*!*!*!**!*!*!*! Alerte Point sensible 2 *!*!*!*!*!*!" << endl;
                     id_pere[operation.get_id()] = precedent.get_id();
                 }
             }
 
 
             Mach[operation.get_id_machine()]=operation.get_id();
-            cout << "Apres : Mach[operation.get_id_machine()] = " << Mach[operation.get_id_machine()] << endl;
+            //cout << "Apres : Mach[operation.get_id_machine()] = " << Mach[operation.get_id_machine()] << endl;
         }
+        //Non utilisé
         /*if( id_pere[operation.get_id()] == -1)
         {
             id_pere[operation.get_id()] = Mach[operation.get_id_machine()];
@@ -180,8 +183,9 @@ int Data::Evaluer(Bierwith & V, vector<int>& chemin_critique)
 
         //Mach[operation.get_id_machine()]=operation.get_id();
 
-        cout << "Job " << V[i] << " : Operation " << Job[V[i]] << endl;
+        // cout << "Job " << V[i] << " : Operation " << Job[V[i]] << endl;
 
+        /*
         // Affichage de Job
         for(int i=0; i< n; i++)
         {
@@ -209,6 +213,7 @@ int Data::Evaluer(Bierwith & V, vector<int>& chemin_critique)
             cout << "EST[" << i << "]=" << EST[i] << "\t";
         }
         cout << endl;
+        */
 
     }
 
@@ -227,8 +232,8 @@ int Data::Evaluer(Bierwith & V, vector<int>& chemin_critique)
         }
     }
     makespan = EST[id_op_maxEST]+Op[id_op_maxEST/m][id_op_maxEST%m].get_duree();
-    cout << "maxEST = " << maxEst << " et id_op_maxEST = " << id_op_maxEST << " et makespan = " << makespan <<endl;
-    cout << "Chemin critique : ";
+    cout << "maxEST = " << maxEst << "\t id_op_maxEST = " << id_op_maxEST << "\t makespan = " << makespan;
+    cout << "\t Chemin critique : ";
     vector<int> chemin;
     vector<int>::iterator it;
     while(id_op_maxEST!=-1)
@@ -239,13 +244,29 @@ int Data::Evaluer(Bierwith & V, vector<int>& chemin_critique)
     reverse(chemin.begin(), chemin.end());
     for(it = chemin.begin(); it!=chemin.end(); ++it)
         cout << *it << " ";
-
+    cout << endl;
     chemin_critique = chemin;
+
+    V.set_val(makespan);
+    //cout << "Valeur du vecteur Bierwith : " <<V.get_val()<<endl;
+
     return makespan;
 }
 
-/*void Data::RechercheLocale(Bierwith& V)
+void Data::Recherche_Locale(Bierwith& V1, vector<int>& S,int n)
 {
+    cout <<endl<<endl<< "Recherche Locale" << endl;
+    for(int i=0; i<n; i++)
+    {
+        copy(V1.get_V().begin(), V1.get_V().end(), ostream_iterator<int>(cout, " ") ); cout << endl;
+        int tmp = V1.get_V()[V1.get_V().size()-1-i];
+        
+        V1.get_V()[V1.get_V().size()-1-i] = V1.get_V()[V1.get_V().size()-2-i];
+        V1.get_V()[V1.get_V().size()-2-i] = tmp;
+        copy(V1.get_V().begin(), V1.get_V().end(), ostream_iterator<int>(cout, " ") ); cout << endl;
 
+        Evaluer(V1,S);
+    }
+    
 }
-*/
+
