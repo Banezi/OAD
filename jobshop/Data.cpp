@@ -248,6 +248,7 @@ int Data::Evaluer(Bierwith & V, vector<int>& chemin_critique)
     chemin_critique = chemin;
 
     V.set_val(makespan);
+    
     //cout << "Valeur du vecteur Bierwith : " <<V.get_val()<<endl;
 
     return makespan;
@@ -256,16 +257,24 @@ int Data::Evaluer(Bierwith & V, vector<int>& chemin_critique)
 void Data::Recherche_Locale(Bierwith& V1, vector<int>& S,int n)
 {
     cout <<endl<<endl<< "Recherche Locale" << endl;
+    cout << "Chemin critique" << endl;
+    copy(V1.chemin_critique.begin(), V1.chemin_critique.end(), ostream_iterator<int>(cout, " ") ); cout << endl;
+
     for(int i=0; i<n; i++)
     {
-        copy(V1.get_V().begin(), V1.get_V().end(), ostream_iterator<int>(cout, " ") ); cout << endl;
+        /*copy(V1.get_V().begin(), V1.get_V().end(), ostream_iterator<int>(cout, " ") ); cout << endl;
         int tmp = V1.get_V()[V1.get_V().size()-1-i];
         
         V1.get_V()[V1.get_V().size()-1-i] = V1.get_V()[V1.get_V().size()-2-i];
         V1.get_V()[V1.get_V().size()-2-i] = tmp;
         copy(V1.get_V().begin(), V1.get_V().end(), ostream_iterator<int>(cout, " ") ); cout << endl;
+        */
 
         Evaluer(V1,S);
+        cout << "----------------------" << endl;
+        copy(S.begin(), S.end(), ostream_iterator<int>(cout, " ") ); cout << endl;
+        
+        
     }
     
 }

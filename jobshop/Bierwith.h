@@ -15,6 +15,7 @@ class Bierwith
         int operator[](int);
         void value();
         void eval();
+        std::vector<int> chemin_critique;
 
         std::vector<int> & get_V();
         int get_val(); void set_val(int makespan);
