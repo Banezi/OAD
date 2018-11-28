@@ -5,6 +5,8 @@
 #include <time.h>
 #include <algorithm>
 #include <iterator>
+#include "metaheuristique.h"
+
 using namespace std;
 
 int main()
@@ -19,5 +21,6 @@ int main()
     vector<int> ch_cri;
     D.Evaluer(V, ch_cri);
     D.Recherche_Locale(V,ch_cri,3);
+    //VNS(D, V);
     return 0;
 }

@@ -23,7 +23,7 @@ class Data
         void afficher_solution_makespan();
         void afficher_matrice();
         int Evaluer(Bierwith& V, std::vector<int>& chemin_critique);
-        Bierwith& Recherche_Locale(Bierwith& V, std::vector<int>& ch_cri,int n);
+        Bierwith& Recherche_Locale(Bierwith& V, std::vector<int>& ch_cri,int n=3);
         void GRASP();
 };
 

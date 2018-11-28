@@ -163,7 +163,7 @@
 	"data.h"
 	<string>
 
-1543363122 c:\users\bane\desktop\github\oad\tp2\data.h
+1543366842 c:\users\bane\desktop\github\oad\tp2\data.h
 	"Operation.h"
 	"Bierwith.h"
 	<vector>
@@ -190,7 +190,7 @@
 	<string>
 	"Data.h"
 
-1543362767 source:c:\users\bane\desktop\github\oad\tp2\main.cpp
+1543368507 source:c:\users\bane\desktop\github\oad\tp2\main.cpp
 	<iostream>
 	"instance.h"
 	"Bierwith.h"
@@ -198,7 +198,20 @@
 	<time.h>
 	<algorithm>
 	<iterator>
+	"metaheuristique.h"
 
 1539893072 source:c:\users\bane\desktop\github\oad\tp2\operation.cpp
 	"Operation.h"
+
+1543369604 c:\users\bane\desktop\github\oad\tp2\metaheuristique.h
+	"Data.h"
+	"Bierwith.h"
+
+1543372405 source:c:\users\bane\desktop\github\oad\tp2\metaheuristique.cpp
+	"metaheuristique.h"
+	<iostream>
+	<vector>
+	<cstdlib>
+	<cmath>
+	"algorithm"
 

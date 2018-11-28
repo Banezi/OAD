@@ -48,6 +48,8 @@
 		<Unit filename="instance.cpp" />
 		<Unit filename="instance.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="metaheuristique.cpp" />
+		<Unit filename="metaheuristique.h" />
 		<Unit filename="test_catch.h" />
 		<Extensions>
 			<code_completion />
