@@ -1,0 +1,43 @@
+# depslib dependency file v1.0
+1511024364 source:c:\users\bane\desktop\github\oad\jobshoptest\data.cpp
+	"data.h"
+	<fstream>
+	<string>
+	<sstream>
+	<cstdlib>
+	<iostream>
+	<algorithm>
+
+1543348677 c:\users\bane\desktop\github\oad\jobshoptest\data.h
+	"job.h"
+	"sequence.h"
+	<vector>
+	<random>
+	<map>
+
+1445790716 c:\users\bane\desktop\github\oad\jobshoptest\job.h
+	<iostream>
+	<limits>
+
+1445919970 c:\users\bane\desktop\github\oad\jobshoptest\sequence.h
+	<iostream>
+	<fstream>
+	<string>
+	<sstream>
+	<cstdlib>
+	<vector>
+	<algorithm>
+
+1444544616 source:c:\users\bane\desktop\github\oad\jobshoptest\job.cpp
+	"job.h"
+
+1448510418 source:c:\users\bane\desktop\github\oad\jobshoptest\metaheuristique.cpp
+	"metaheuristique.h"
+
+1448488768 c:\users\bane\desktop\github\oad\jobshoptest\metaheuristique.h
+	"data.h"
+
+1508597148 source:c:\users\bane\desktop\github\oad\jobshoptest\sequence.cpp
+	"sequence.h"
+	<algorithm>
+
