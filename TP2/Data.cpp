@@ -6,7 +6,7 @@
 #include <time.h>
 #include <algorithm>
 #include <iterator>
-
+#include <cstdio>
 using namespace std;
 
 int Data::get_n()
@@ -59,7 +59,6 @@ int Data::indice_op_vecteur(Bierwith& V1, int id_op)
             }
         }
     }
-    cout << "L'indice dans le vecteur de Bierwith est : " << indice << endl;
     return indice;
 }
 
@@ -133,14 +132,6 @@ int Data::Evaluer(Bierwith & V, vector<int>& chemin_critique)
 {
     //afficher_matrice();
     //afficher();
-    cout << "Evaluation du vecteur : ";
-    cout << "V = " ;
-    for(int i=0; i< n*m; i++)
-    {
-        cout << V[i] << " ";
-    }
-    cout << endl;
-
     //Cr�ations des s�quences
     vector < vector<int> > sequence;
     sequence.resize(n);
@@ -163,7 +154,7 @@ int Data::Evaluer(Bierwith & V, vector<int>& chemin_critique)
     vector<int> Mach(m,-1); //Derni�re operation trait�e sur la machine
     vector<int> id_pere(n*m, -2); // -2 : non trait�   -1 : origine
     vector<int> EST(n*m, -1); //date de debut au plut�t   -1:non trait�
-
+    pere.resize(n*m);
 
     for(int i=0; i<n*m ; i++)
     {
@@ -178,11 +169,13 @@ int Data::Evaluer(Bierwith & V, vector<int>& chemin_critique)
             //cout << "------------------> operation.get_idmachine() = " << operation.get_id_machine() << " et Mach[opgetidmach] = " << Mach[operation.get_id_machine()] << endl;
             //cout << "Avant : Mach[operation.get_id_machine()] = " << Mach[operation.get_id_machine()] << endl;
             id_pere[operation.get_id()] = Mach[operation.get_id_machine()];
+            pere[operation.get_id()] = Mach[operation.get_id_machine()];
 
             if(Mach[operation.get_id_machine()] == -1 && operation.get_position()!=0)
             {
                 //cout << "\t\t\t\t\t\t\t*!*!*!*!**!*!*!*! Alerte Point sensible *!*!*!*!*!*!" << endl;
                 id_pere[operation.get_id()] = operation.get_id() - 1;
+                pere[operation.get_id()] = operation.get_id() - 1;
             }
             if(operation.get_id_machine() >= 0 && Mach[operation.get_id_machine()] >= 0)
             {
@@ -192,6 +185,7 @@ int Data::Evaluer(Bierwith & V, vector<int>& chemin_critique)
                 {
                     //cout << "\t\t\t\t\t\t\t*!*!*!*!**!*!*!*! Alerte Point sensible 2 *!*!*!*!*!*!" << endl;
                     id_pere[operation.get_id()] = precedent.get_id();
+                    pere[operation.get_id()] = precedent.get_id();
                 }
             }
 
@@ -271,8 +265,6 @@ int Data::Evaluer(Bierwith & V, vector<int>& chemin_critique)
     }
     makespan = EST[id_op_maxEST]+Op[id_op_maxEST/m][id_op_maxEST%m].get_duree();
 
-    cout << "maxEST = " << maxEst << "\t id_op_maxEST = " << id_op_maxEST << "\t makespan = " << makespan;
-    cout << "\t Chemin critique : ";
     vector<int> chemin;
     vector<int>::iterator it;
     while(id_op_maxEST!=-1)
@@ -281,14 +273,16 @@ int Data::Evaluer(Bierwith & V, vector<int>& chemin_critique)
         id_op_maxEST = id_pere[id_op_maxEST];
     }
     reverse(chemin.begin(), chemin.end());
-    for(it = chemin.begin(); it!=chemin.end(); ++it)
-        cout << *it << " ";
-    cout << endl;
-    chemin_critique = chemin;
 
+    chemin_critique = chemin;
+    V.chemin_critique = chemin;
     V.set_val(makespan);
 
-    //cout << "Valeur du vecteur Bierwith : " <<V.get_val()<<endl;
+
+    cout << "Evaluation du vecteur : "<< "V = " ;
+    copy(V.get_V().begin(), V.get_V().end(), ostream_iterator<int>(cout, " "));
+    cout << "makespan = " << makespan<< "\t Chemin critique : ";
+    copy(chemin_critique.begin(),chemin_critique.end(),ostream_iterator<int>(cout, " ")); cout << endl;
 
     return makespan;
 }
@@ -302,41 +296,59 @@ Bierwith& Data::Recherche_Locale(Bierwith& V1, vector<int>& ch_cri,int n)
     cout << "Vecteur de Bierwith initial : ";
     copy(V1.get_V().begin(), V1.get_V().end(), ostream_iterator<int>(cout, " ") );
     cout << "Chemin critique initial : ";
-    copy(ch_cri.begin(), ch_cri.end(), ostream_iterator<int>(cout, " "));
+    //copy(ch_cri.begin(), ch_cri.end(), ostream_iterator<int>(cout, " "));
+    copy(V1.chemin_critique.begin(), V1.chemin_critique.end(), ostream_iterator<int>(cout, " "));
     cout << endl  <<endl ;
 
     Bierwith Solution(V1);
 
-    for(int i=0; i<n; i++)
-    {
-        cout << "************** Modification du vecteur de Bierwith ***********"<< endl;
-        int dernier = ch_cri[ch_cri.size()-1],
-            avdernier = ch_cri[ch_cri.size()-2];
-        int indice_dernier = indice_op_vecteur(V1, dernier);
-        int indice_avdernier = indice_op_vecteur(V1, avdernier);
-        cout << "Dernier : " << dernier << " et avant dernier : " << avdernier << endl;
-        cout << "Indice dernier: " << indice_dernier << " et indice avdernier: " << indice_avdernier << endl;
-        //Permutation dans le vecteur de Bierwith
-        int temp = V1.get_V()[indice_dernier];
-        V1.get_V()[indice_dernier] = V1.get_V()[indice_avdernier];
-        V1.get_V()[indice_avdernier] = temp;
-        //Affichage du nouveau vecteur
-        copy(V1.get_V().begin(), V1.get_V().end(), ostream_iterator<int>(cout, " ") ); cout << endl;
 
-        cout << "--------------------------------" << endl;
-        Evaluer(V1,ch_cri);
-        if(V1.get_val()<Solution.get_val())
+    for(int i=0; i<ch_cri.size(); i++)
+    {
+        int dernier = ch_cri[ch_cri.size()-1-i],
+            peredernier = pere[dernier],
+            indice_dernier=0,
+            indice_peredernier=0;
+        if(peredernier!=-1)
         {
-            cout << endl << "Nouveau vecteur : ";
-            copy(V1.get_V().begin(), V1.get_V().end(), ostream_iterator<int>(cout, " ") ); cout << endl;
-            cout << "Nouveau chemin critique : ";
-            copy(ch_cri.begin(), ch_cri.end(), ostream_iterator<int>(cout, " ") ); cout << endl;
-            cout << "Nouveau makespan : ";
-            cout << V1.get_val() << endl;
-            Solution = V1;
+            indice_dernier = indice_op_vecteur(V1, dernier);
+            indice_peredernier = indice_op_vecteur(V1, peredernier);
+        }
+
+        //Permutation dans le vecteur de Bierwith
+        if(peredernier!=-1)
+        {
+            int temp = V1.get_V()[indice_dernier];
+            V1.get_V()[indice_dernier] = V1.get_V()[indice_peredernier];
+            V1.get_V()[indice_peredernier] = temp;
         }
 
     }
+    cout << "--------------------------------" << endl;
+    //Affichage du nouveau vecteur
+    cout << "Vecteur apres permutation : ";
+    copy(V1.get_V().begin(), V1.get_V().end(), ostream_iterator<int>(cout, " ") ); cout << endl;
+    Evaluer(V1,ch_cri);
+    if(V1.get_val()<Solution.get_val())
+    {
+        cout << endl << "Nouveau vecteur : ";
+        copy(V1.get_V().begin(), V1.get_V().end(), ostream_iterator<int>(cout, " ") ); cout << endl;
+        cout << "Nouveau chemin critique : ";
+        copy(ch_cri.begin(), ch_cri.end(), ostream_iterator<int>(cout, " ") ); cout << endl;
+        cout << "Nouveau makespan : ";
+        cout << V1.get_val() << endl;
+        Solution = V1;
+    }
+    else
+    {
+        cout << "Pas d'amelioration !" << endl;
+        cout << "Solution actuelle : V = ";
+        copy(Solution.get_V().begin(), Solution.get_V().end(), ostream_iterator<int>(cout, " "));
+        cout << "makespan = " << Solution.get_val() << " chemin_critique = ";
+        copy(Solution.chemin_critique.begin(),Solution.chemin_critique.end(), ostream_iterator<int>(cout," ")); cout << endl;
+        V1 = Solution;
+    }
+
     return Solution;
 }
 

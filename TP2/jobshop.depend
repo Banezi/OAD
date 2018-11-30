@@ -146,7 +146,7 @@
 	"Bierwith.h"
 	<vector>
 
-1543362607 source:c:\users\bane\desktop\github\oad\tp2\bierwith.cpp
+1543535333 source:c:\users\bane\desktop\github\oad\tp2\bierwith.cpp
 	"Bierwith.h"
 	<iostream>
 
@@ -163,14 +163,14 @@
 	"data.h"
 	<string>
 
-1543366842 c:\users\bane\desktop\github\oad\tp2\data.h
+1543522238 c:\users\bane\desktop\github\oad\tp2\data.h
 	"Operation.h"
 	"Bierwith.h"
 	<vector>
 
 1543353317 c:\users\bane\desktop\github\oad\tp2\operation.h
 
-1543362230 source:c:\users\bane\desktop\github\oad\tp2\data.cpp
+1543530075 source:c:\users\bane\desktop\github\oad\tp2\data.cpp
 	"Data.h"
 	<iostream>
 	<iomanip>
@@ -179,6 +179,7 @@
 	<time.h>
 	<algorithm>
 	<iterator>
+	<cstdio>
 
 1540547799 source:c:\users\bane\desktop\github\oad\tp2\instance.cpp
 	"instance.h"
@@ -190,7 +191,7 @@
 	<string>
 	"Data.h"
 
-1543368507 source:c:\users\bane\desktop\github\oad\tp2\main.cpp
+1543536508 source:c:\users\bane\desktop\github\oad\tp2\main.cpp
 	<iostream>
 	"instance.h"
 	"Bierwith.h"
@@ -203,15 +204,16 @@
 1539893072 source:c:\users\bane\desktop\github\oad\tp2\operation.cpp
 	"Operation.h"
 
-1543369604 c:\users\bane\desktop\github\oad\tp2\metaheuristique.h
+1543534080 c:\users\bane\desktop\github\oad\tp2\metaheuristique.h
 	"Data.h"
 	"Bierwith.h"
 
-1543372405 source:c:\users\bane\desktop\github\oad\tp2\metaheuristique.cpp
+1543535040 source:c:\users\bane\desktop\github\oad\tp2\metaheuristique.cpp
 	"metaheuristique.h"
 	<iostream>
 	<vector>
 	<cstdlib>
 	<cmath>
 	"algorithm"
+	<iterator>
 

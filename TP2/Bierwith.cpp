@@ -32,6 +32,9 @@ Bierwith::Bierwith(Bierwith const& V1)
     V.erase(V.begin(),V.end());
     V.resize(V1.V.size());
     copy(V1.V.begin(),V1.V.end(), V.begin());
+    chemin_critique.erase(chemin_critique.begin(),chemin_critique.end());
+    chemin_critique.resize(V1.chemin_critique.size());
+    chemin_critique = V1.chemin_critique;
 }
 
 void Bierwith::suffle()

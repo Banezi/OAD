@@ -11,6 +11,7 @@ class Data
         int m;
         //std::vector< std::vector <Operation> > Op;
     public:
+        std::vector<int> pere;
         std::vector< std::vector <Operation> > Op; // Violation de l'encapsulation
         int get_n(); void set_n(int nn);
         int get_m(); void set_m(int mm);

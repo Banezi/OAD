@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <cmath>
 #include "algorithm"
+#include <iterator>
 using namespace std;
 
 int VNS(Data& D,Bierwith& B)
@@ -18,7 +19,7 @@ int VNS(Data& D,Bierwith& B)
     vector<int> ch_cri;
     D.Recherche_Locale(S,ch_cri);
     double alpha=0.05;
-    while(alpha < 1)
+    while(alpha != 1.0)
     {
         shaking(S1, alpha);
         cout << "sortie shaking" << endl;
@@ -32,21 +33,26 @@ int VNS(Data& D,Bierwith& B)
         {
             alpha += 0.05;
         }
+        cout << "alpha = " << alpha << endl;
     }
     return S.get_val();
 }
 void shaking(Bierwith& B, double alpha)
 {
     int i=0,j=0;
-    while(abs(i-j)!= alpha*B.get_V().size())
+    /*while(abs(i-j)!= alpha*B.get_V().size())
     {
+        cout << "abs(i-j) = " << abs(i-j) << " alpha = " << alpha << " alpha*B.get_V().size = " << alpha*B.get_V().size() << endl;
         i=rand()%B.get_V().size();
         j=rand()%B.get_V().size();
-    }
+    }*/
+    i=rand()%B.get_V().size();
+    j=rand()%B.get_V().size();
     if(i<j)
-        random_shuffle(B.get_V().begin()+i, B.get_V().begin()+j);
+        random_shuffle(B.get_V().begin(), B.get_V().begin());
     else
-        random_shuffle(B.get_V().begin()+j, B.get_V().begin()+i);
+        random_shuffle(B.get_V().begin(), B.get_V().begin());
+
 }
 Bierwith& MultiStartRL(Data& D,Bierwith& S, int n)
 {
@@ -74,4 +80,22 @@ int ILS(Data& D,Bierwith& S, int n)
             S = S1;
     }
     return S.get_val();
+}
+
+Bierwith& GRASP(Data& D, Bierwith& B)
+{
+    int solution = INT_MAX;
+    Bierwith Resultat(B);
+    Bierwith S(B);
+    vector<int> ch_cri;
+    for(int i=0;i<1000;++i)
+	{
+		D.Recherche_Locale(S,ch_cri);
+		if(S.get_val() < solution)
+		{
+			solution = S.get_val();
+			Resultat = S;
+		}
+	}
+	return Resultat;
 }
