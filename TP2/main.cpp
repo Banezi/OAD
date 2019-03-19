@@ -20,9 +20,9 @@ int main()
     Bierwith V(D.get_n(), D.get_m());
     vector<int> ch_cri;
     D.Evaluer(V, ch_cri);
-    D.Recherche_Locale(V,ch_cri,300);
+    //D.Recherche_Locale(V,ch_cri,300);
     //MultiStartRL(D, V, 3);
-    //GRASP(D,V);
+    GRASP(D,V);
 
     return 0;
 }
